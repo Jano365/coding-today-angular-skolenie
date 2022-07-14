@@ -21,23 +21,23 @@ export class SignupFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit({value, valid}: {value: User, valid: boolean | null}) {
-    console.log(value, valid)
+  // onSubmit({value, valid}: {value: User, valid: boolean | null}) {
+  //   console.log(value, valid)
     
     
-    // console.log(f);
-    // if(f.valid) {
-    //   alert('Save....')
-    //   return;
-    // }
+  //   // console.log(f);
+  //   // if(f.valid) {
+  //   //   alert('Save....')
+  //   //   return;
+  //   // }
 
-    // console.log('neco je spatne')
+  //   // console.log('neco je spatne')
    
-  }
-
-
-  // onSubmit(f: NgForm) {
-  //   console.log(f)
   // }
+
+
+  onSubmit(f: NgForm) {
+    console.log(f)
+  }
 
 }

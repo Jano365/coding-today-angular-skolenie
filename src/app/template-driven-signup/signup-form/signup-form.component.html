@@ -3,6 +3,7 @@
         <span>Name</span>
         <input type="text" [ngModel]="user.name" name="name" placeholder="Your name" #nameCtrl="ngModel" required>
     </label>
+    <div *ngIf="nameCtrl.errors?.required && nameCtrl.touched">Name is required</div>
 
     <label>
         <span>Email</span>
