@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { FilmDetailComponent } from './films/film-detail/film-detail.component';
 import { FilmsDashboardComponent } from './films/films-dashboard/films-dashboard.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   {
     path: "films",
     component: LayoutViewComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: "",

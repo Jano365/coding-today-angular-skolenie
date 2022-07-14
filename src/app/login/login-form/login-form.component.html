@@ -1,4 +1,48 @@
-<div class="login-form">
-    <h1>Click to authorize</h1>
-    <button (click)="login()">Login</button>
-</div>
+<!-- TEMPLATE DRIVEN FORMS - ŠABLONOVÉ FORMULÁŘE -->
+
+<!-- 
+#nejakyUkazatel = HTML
+#f="ngForm" = REFERENCE NA ngForm = na formular
+#passwordCtrl="ngModel" = reference na input daneho pole, ktere ma direktivu ngModel 
+-->
+
+<form (ngSubmit)="submitForm(f)" #f="ngForm">
+    <mat-form-field>
+        <input matInput 
+        placeholder="Zadejte přihlašovací jméno" 
+        name="username" 
+        [(ngModel)]="loginForm.username"
+        required
+        #userNameCtrl="ngModel">
+        <mat-error *ngIf="userNameCtrl.invalid">POLE JE NEVALIDNI</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput 
+        placeholder="Zadejte heslo" 
+        name="password" 
+        [(ngModel)]="loginForm.password"
+        required
+        #passwordCtrl="ngModel">
+        <mat-error *ngIf="passwordCtrl.invalid">POLE JE NEVALIDNI</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput 
+        placeholder="Zadejte cislo" 
+        name="myNumber" 
+        [(ngModel)]="loginForm.myNumber"
+        required
+        appMinValue
+        type="number"
+        #myNumberCtrl="ngModel">
+        <!-- <mat-error *ngIf="myNumberCtrl.invalid">POLE JE NEVALIDNI</mat-error> -->
+
+        <mat-error *ngIf="myNumberCtrl.errors?.['isStringError']">POSILATE TAM STRING</mat-error>
+        <mat-error *ngIf="myNumberCtrl.errors?.['minValueError']">MINIMALNI HODNOTA JE 5</mat-error>
+        <mat-error *ngIf="myNumberCtrl.errors?.['required']">TOTO POLE JE POVINNE</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="warn" type="submit" 
+    [disabled]="send">Submit</button>
+</form>

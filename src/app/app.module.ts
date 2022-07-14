@@ -13,6 +13,8 @@ import { FilmsModule } from './films/films.module';
 import { HighlightDirective } from './highlight.directive';
 import { TemplateDrivenSignupModule } from './template-driven-signup/template-driven-signup.module';
 import { ReactiveSignupModule } from './reactive-signup/reactive-signup.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ReactiveSignupModule } from './reactive-signup/reactive-signup.module';
     HttpClientModule,
     FilmsModule,
     TemplateDrivenSignupModule,
-    ReactiveSignupModule
+    ReactiveSignupModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
