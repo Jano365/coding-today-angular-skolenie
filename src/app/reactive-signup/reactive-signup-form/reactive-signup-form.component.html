@@ -3,6 +3,7 @@
         <span>Name</span>
         <input formControlName="name" type="text" placeholder="Your name">
     </label>
+    <!-- user.controls.name.touched  -->
     <div class="error" *ngIf="(name?.touched || submitted) && name.hasError('required')">
         Toto pole je povinne
     </div>
