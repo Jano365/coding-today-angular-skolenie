@@ -15,6 +15,14 @@ import { TemplateDrivenSignupModule } from './template-driven-signup/template-dr
 import { ReactiveSignupModule } from './reactive-signup/reactive-signup.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './+state/auth.effect';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { authReducer } from './+state/auth.reducer';
+
+const rootReducer = {
+  auth: authReducer
+}
 
 @NgModule({
   declarations: [
@@ -33,8 +41,9 @@ import { EffectsModule } from '@ngrx/effects';
     FilmsModule,
     TemplateDrivenSignupModule,
     ReactiveSignupModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([])
+    StoreModule.forRoot(rootReducer),
+    EffectsModule.forRoot([AuthEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]

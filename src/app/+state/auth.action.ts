@@ -4,6 +4,7 @@
 import { Token } from '@angular/compiler';
 import { createAction, props } from '@ngrx/store';
 import { Authenticate } from '../login/login-form/authenticate.interface';
+import { User } from '../login/login-form/user.interface';
 
 // export enum AuthActionTypes {
 //   Login = '[Auth Page] Login',
@@ -34,10 +35,10 @@ export const Login = createAction(
 
 export const LoginSuccess = createAction(
   '[Auth API] Login Success',
-  props<{ payload: Token }>()
+  props<{ payload: User }>()
 );
 
 export const LoginFail = createAction(
   '[Auth API] Login Fail',
-  props<{payload: any}>()
+  props<{ payload: any }>()
 );

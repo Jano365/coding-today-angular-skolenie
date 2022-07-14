@@ -5,13 +5,12 @@ import * as authActions from './auth.action'
 
 export interface AuthState {
   loading: boolean;
-  user: User;
-  token: string;
+  user: null | User;
   error: any;
 }
 
-export const initialState = {
-  error: '',
+export const initialState: AuthState = {
+  error: null,
   user: null,
   loading: false
 };
@@ -43,7 +42,7 @@ export const authReducer = createReducer(
   })),
 
   on(authActions.LoginSuccess, (state, {payload}) => ({
-    ...state, loading: false, token: payload
+    ...state, loading: false, user: payload
   })),
 
   on(authActions.LoginFail, (state, {payload}) => ({

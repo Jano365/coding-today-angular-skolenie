@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { lastValueFrom } from 'rxjs';
+import { Login } from 'src/app/+state/auth.action';
+import { AuthState } from 'src/app/+state/auth.reducer';
 import { AuthService } from './auth.service';
 import { Authenticate } from './authenticate.interface';
 
@@ -20,7 +23,7 @@ export class LoginFormComponent implements OnInit {
     myNumber: 0
   }
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private store: Store<AuthState>) { }
 
   ngOnInit(): void {
   }
@@ -40,27 +43,28 @@ export class LoginFormComponent implements OnInit {
 
     if (f.valid) {
       this.send = true;
-      await this.callApi(f.value);
+      this.store.dispatch(Login({payload: f.value}))
+      
     } else {
       console.log('Error na formulari')
     }
   }
 
-  private async callApi(value: Authenticate) {
-    try {
+  // private async callApi(value: Authenticate) {
+  //   try {
 
-      // odesilame username a password
-      // vrati se nam token
-      const responseToken = await lastValueFrom(this.authService.login(value))
-      console.log('token', responseToken);
+  //     // odesilame username a password
+  //     // vrati se nam token
+  //     const responseToken = await lastValueFrom(this.authService.login(value))
+  //     console.log('token', responseToken);
 
-      // preroutovat uzivatele na users komponentu
-      this.router.navigate(['/films'])
+  //     // preroutovat uzivatele na users komponentu
+  //     this.router.navigate(['/films'])
 
-    } catch (error) {
-      console.log('error:', error)
-    }
-  }
+  //   } catch (error) {
+  //     console.log('error:', error)
+  //   }
+  // }
 
   // private async callApi(value: Authenticate) {
   //   try {

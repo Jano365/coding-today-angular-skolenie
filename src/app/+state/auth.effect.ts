@@ -16,6 +16,7 @@ export class AuthEffects {
         .login(payload)
         .pipe(
           map((user: any) => {
+            console.log(user,' in')
             return authActions.LoginSuccess({payload: user})
           }),
           catchError(error => of(authActions.LoginFail(error)))
@@ -29,8 +30,10 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(authActions.LoginSuccess),
         map(({payload}) => payload),
-        tap(token => {
-          localStorage.setItem('token', JSON.stringify(token))
+        tap(user => {
+          console.log(user)
+          localStorage.setItem('token', JSON.stringify(user.token))
+          this.router.navigate(['/films'])
         })
       ),
     { dispatch: false }

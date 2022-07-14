@@ -18,18 +18,18 @@ export class AuthService {
 
    login(authenticate: Authenticate) : Observable<Token> {
     return this.httpClient.post<User>('http://gopas.testingwebwordpress.cz/login.php', authenticate)
-    .pipe(tap((response: User) => {
-      localStorage.setItem('token', JSON.stringify(response.token))
-      this.userSubject$.next(response)
+    // .pipe(tap((response: User) => {
+    //   localStorage.setItem('token', JSON.stringify(response.token))
+    //   this.userSubject$.next(response)
 
-    }))
+    // }))
   }
 
   resolve(token: Token) : Observable<User> {
     return this.httpClient.post<User>('http://gopas.testingwebwordpress.cz/resolve-user.php', token)
-    .pipe(tap((response: User) => {
-      this.userSubject$.next(response)
-    }));
+    // .pipe(tap((response: User) => {
+    //   this.userSubject$.next(response)
+    // }));
   }
 
   logout() {
