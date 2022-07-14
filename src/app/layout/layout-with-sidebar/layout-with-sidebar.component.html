@@ -2,6 +2,14 @@
     
     <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="layout-sidenav">
         <mat-toolbar color="primary">Logo</mat-toolbar>
+
+
+        <a [routerLink]="['/articles']">Articles</a> |
+        <a [routerLink]="['/films']">Films</a>
+
+        <ng-content select="[version]"></ng-content>
+
+
     </mat-sidenav>
   
     <mat-sidenav-content>
@@ -10,5 +18,6 @@
                 <mat-icon>menu</mat-icon>
             </button>
         </mat-toolbar>
+        <ng-content select="[body]"></ng-content>
     </mat-sidenav-content>
   </mat-sidenav-container>

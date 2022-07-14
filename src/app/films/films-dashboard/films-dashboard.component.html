@@ -1,0 +1,13 @@
+<div *ngFor="let film of films">
+    <app-films-card>
+        {{film.description | uppercase}}
+        <br>
+        <mat-icon>
+            {{film.favorite | iconize}}
+        </mat-icon>
+        <br>
+        <a [routerLink]="['/films', 'detail', film.id]">Otevřít detail</a>
+    </app-films-card>
+</div>
+
+<button (click)="save()">SAVE</button>
