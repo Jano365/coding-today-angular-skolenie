@@ -10,10 +10,13 @@ import { LoginModule } from './login/login.module';
 import { ViewsModule } from './views/views.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FilmsModule } from './films/films.module';
+import { HighlightDirective } from './highlight.directive';
+import { TemplateDrivenSignupModule } from './template-driven-signup/template-driven-signup.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { FilmsModule } from './films/films.module';
     LoginModule,
     ViewsModule,
     HttpClientModule,
-    FilmsModule
+    FilmsModule,
+    TemplateDrivenSignupModule
   ],
   providers: [],
   bootstrap: [AppComponent]
