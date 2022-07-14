@@ -1,19 +1,36 @@
-<form novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+<form novalidate #f="ngForm" id="signUpForm">
     <label>
         <span>Name</span>
-        <input type="text" [ngModel]="user.name" name="name" placeholder="Your name" #nameCtrl="ngModel" required>
+        <input type="text" [ngModel]="user.name" name="name" placeholder="Your name" #nameCtrl="ngModel" required
+            minlength="2" (change)="validateWords($event)">
     </label>
-    <div *ngIf="nameCtrl.errors?.required && nameCtrl.touched">Name is required</div>
+    <div *ngIf="nameCtrl.errors?.blackListed && (nameCtrl.touched || f.submitted)" class="error">Name cannot be rude word</div>
+    <div *ngIf="nameCtrl.errors?.required && (nameCtrl.touched || f.submitted)" class="error">Name is required</div>
+    <div *ngIf="nameCtrl.errors?.minlength && (nameCtrl.touched || f.submitted)" class="error">Minlength must be more than 2 chars</div>
 
+    <div *ngFor="let item of [1,2,3,4,5]; let index = index">
+    <div [ngModelGroup]="index">
+        <label>
+            <span>Email</span>
+            <input type="text" [ngModel]="user.account.email" name="email" placeholder="Your email">
+        </label>
+
+        <label>
+            <span>Confirm email</span>
+            <input type="text" [ngModel]="user.account.confirm" name="confirm" placeholder="Your email again">
+        </label>
+    </div>
+    </div>
+    
     <label>
-        <span>Email</span>
-        <input type="text" [ngModel]="user.account.email" name="email" placeholder="Your email">
+        <span>Password</span>
+        <input appPassword type="text" [ngModel]="user.password" name="password" placeholder="Your password" #passwordCtrl="ngModel" required>
     </label>
+    {{passwordCtrl?.errors | json}}
+    <div *ngIf="passwordCtrl.errors?.passwordError && (passwordCtrl.touched || f.submitted)" class="error">Password has to be stronger</div>
 
-    <label>
-        <span>Confirm email</span>
-        <input type="text" [ngModel]="user.account.confirm" name="confirm" placeholder="Your email again">
-    </label>
-
-    <button type="submit">Sign up</button>
 </form>
+
+
+<button form="signUpForm" (click)="onSubmit(f)" [disabled]="isSubmitted">Sign up</button>

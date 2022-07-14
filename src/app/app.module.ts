@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FilmsModule } from './films/films.module';
 import { HighlightDirective } from './highlight.directive';
 import { TemplateDrivenSignupModule } from './template-driven-signup/template-driven-signup.module';
+import { ReactiveSignupModule } from './reactive-signup/reactive-signup.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TemplateDrivenSignupModule } from './template-driven-signup/template-dr
     ViewsModule,
     HttpClientModule,
     FilmsModule,
-    TemplateDrivenSignupModule
+    TemplateDrivenSignupModule,
+    ReactiveSignupModule
   ],
   providers: [],
   bootstrap: [AppComponent]

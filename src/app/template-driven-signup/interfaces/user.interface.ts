@@ -3,5 +3,6 @@ export interface User {
     account: {
         email: string,
         confirm: string
-    }
+    },
+    password: string
 }

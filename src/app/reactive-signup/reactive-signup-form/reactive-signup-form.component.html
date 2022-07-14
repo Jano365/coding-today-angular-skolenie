@@ -1,0 +1,25 @@
+<form novalidate [formGroup]="user" id="signUpForm">
+    <label>
+        <span>Name</span>
+        <input formControlName="name" type="text" placeholder="Your name">
+    </label>
+    <div class="error" *ngIf="(name?.touched || submitted) && name.hasError('required')">
+        Toto pole je povinne
+    </div>
+
+    <div formGroupName="account">
+        <label>
+            <span>Email</span>
+            <input formControlName="email" type="text" placeholder="Your email">
+        </label>
+
+        <label>
+            <span>Confirm email</span>
+            <input formControlName="confirm" type="text" placeholder="Your email again">
+        </label>
+    </div>
+
+</form>
+
+
+<button form="signUpForm" (click)="onSubmit()">Sign up</button>
