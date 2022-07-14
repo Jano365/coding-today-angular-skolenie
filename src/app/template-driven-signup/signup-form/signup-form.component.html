@@ -9,8 +9,7 @@
     <div *ngIf="nameCtrl.errors?.required && (nameCtrl.touched || f.submitted)" class="error">Name is required</div>
     <div *ngIf="nameCtrl.errors?.minlength && (nameCtrl.touched || f.submitted)" class="error">Minlength must be more than 2 chars</div>
 
-    <div *ngFor="let item of [1,2,3,4,5]; let index = index">
-    <div [ngModelGroup]="index">
+    <div ngModelGroup="account">
         <label>
             <span>Email</span>
             <input type="text" [ngModel]="user.account.email" name="email" placeholder="Your email">
@@ -20,7 +19,6 @@
             <span>Confirm email</span>
             <input type="text" [ngModel]="user.account.confirm" name="confirm" placeholder="Your email again">
         </label>
-    </div>
     </div>
     
     <label>
