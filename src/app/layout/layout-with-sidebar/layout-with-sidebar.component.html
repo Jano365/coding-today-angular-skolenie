@@ -2,7 +2,7 @@
     
     <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="layout-sidenav">
         <mat-toolbar color="primary">Logo</mat-toolbar>
-
+        {{count}}
 
         <a [routerLink]="['/articles']">Articles</a> |
         <a [routerLink]="['/films']">Films</a>
@@ -16,6 +16,7 @@
         <mat-toolbar color="primary">
             <button mat-icon-button (click)="sidenav.toggle()">
                 <mat-icon>menu</mat-icon>
+                {{user?.name}}
             </button>
         </mat-toolbar>
         <ng-content select="[body]"></ng-content>

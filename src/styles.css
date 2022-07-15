@@ -1,4 +1,14 @@
-html, body {
+
+html,body {
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+  font-family: Roboto, "Helvetica Neue, sans-serif";
+}
+
+/* html, body {
     margin: 0;
     padding: 0;
   }
@@ -85,4 +95,4 @@ html, body {
     outline: none;
     -webkit-box-shadow: inset 0 -2px #62c2e4;
     box-shadow: inset 0 -2px #62c2e4;
-  }
+  } */

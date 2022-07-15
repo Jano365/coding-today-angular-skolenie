@@ -13,6 +13,12 @@
             <span>Email</span>
             <input formControlName="email" type="text" placeholder="Your email">
         </label>
+        <div class="error" *ngIf="account.get('email')?.hasError('isNotUnique')">
+            Tento email neni validni
+        </div>
+        <div class="error" *ngIf="account.get('email')?.hasError('isNotUniqueAsync')">
+            Tento email neni validni asynchronne
+        </div>
 
         <label>
             <span>Confirm email</span>

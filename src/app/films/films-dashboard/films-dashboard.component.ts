@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { combineLatest, filter, lastValueFrom } from 'rxjs';
+import { Increment } from 'src/app/+state/counter/counter.action';
 import { MockService } from 'src/app/mock.service';
 import { FilmService } from '../services/film.service';
 
@@ -13,7 +15,7 @@ export class FilmsDashboardComponent implements OnInit {
   mockData1: any;
   mockData2: any;
 
-  constructor(private filmService: FilmService, private mockService: MockService) { }
+  constructor(private filmService: FilmService, private mockService: MockService, private store: Store<any>) { }
 
   async ngOnInit() {
     const response = await lastValueFrom(this.filmService.getFilms())
@@ -60,6 +62,10 @@ export class FilmsDashboardComponent implements OnInit {
         console.log(error)
     }
 
+  }
+
+  increment() {
+    this.store.dispatch(Increment())
   }
 
 }
